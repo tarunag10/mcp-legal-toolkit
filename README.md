@@ -43,6 +43,31 @@ small, testable, and easy for maintainers to review.
   parties, and prepare a routing summary without sending messages or taking
   action automatically.
 
+## Safety model
+
+This project should be safe to run against sensitive legal and compliance
+materials by default. Tools, examples, and docs should assume that source
+documents are confidential, reviewer-owned, and read-only unless a user has
+explicitly opted into a stronger action.
+
+Recommended defaults:
+
+- Read-only access: tools may inspect local files, metadata, and review
+  checklists, but they should not edit source documents or compliance records.
+- Human approval: any proposed edit, upload, issue comment, pull request,
+  filing, notice, or external message must require explicit user approval.
+- Auditability: generated outputs should identify the tool call, input scope,
+  source files, assumptions, and unresolved reviewer decisions.
+- Data boundaries: privileged, confidential, personal, or regulated data should
+  stay local unless the user has approved the exact destination and purpose.
+- Review-first output: tools should prepare source-linked summaries and
+  checklists, not final legal advice or autonomous compliance decisions.
+
+For maintainers, new tools should document their permissions, inputs, outputs,
+and failure modes before they are treated as stable. For users, every generated
+summary should be treated as a review aid that needs independent verification
+against the underlying source material.
+
 ## Contributing
 
 Useful contributions are narrow and evidence-led. Good first issues include
